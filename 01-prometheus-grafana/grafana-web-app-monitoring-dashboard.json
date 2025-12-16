@@ -611,7 +611,7 @@
             "uid": "w5rT9TGvz"
           },
           "editorMode": "code",
-          "expr": "histogram_quantile(0.5, sum(rate(http_request_duration_seconds_bucket{job='$job'}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.5, sum(rate(http_request_duration_seconds_bucket{job='$job'}[5m])) by (le))",
           "legendFormat": "p50",
           "range": true,
           "refId": "A"
@@ -1041,6 +1041,6 @@
   "timezone": "Asia/Kolkata",
   "title": "Web App Monitoring Dashboard",
   "uid": "Q6AOiaGDk",
-  "version": 11,
+  "version": 13,
   "weekStart": ""
 }
