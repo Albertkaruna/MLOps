@@ -1,0 +1,8 @@
+stages:
+  train_model:
+    cmd: python train.py
+    deps:
+    - data/test-data.txt
+    - train.py
+    outs:
+    - model.pkl
