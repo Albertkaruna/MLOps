@@ -1,0 +1,11 @@
+services:
+  ml-api:
+    build: .
+    image: ml-api:latest
+    ports:
+      - "5000:5000"
+    restart: always
+    volumes:
+      - ./hf_cache:/app/model_cache
+    environment:
+      - HF_HOME=/app/model_cache
