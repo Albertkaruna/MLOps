@@ -1,5 +1,6 @@
 services:
   ml-app:
+    build: .
     image: ml-app:latest
     ports:
       - "5000:5000"
@@ -8,11 +9,26 @@ services:
       - hf-cache:/app/model_cache
     environment:
       - HF_HOME=/app/model_cache
+      - REDIS_HOST=redis-cache
+      - REDIS_PORT=6379
+    networks:
+      - ml-network
+    depends_on:
+      - redis-cache
+
+  redis-cache:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    restart: always
+    volumes:
+      - redis-cache:/data
     networks:
       - ml-network
 
 volumes:
   hf-cache:
+  redis-cache:
 
 networks:
   ml-network:
