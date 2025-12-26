@@ -5,9 +5,14 @@ services:
       - "5000:5000"
     restart: always
     volumes:
-      - hf_cache:/app/model_cache
+      - hf-cache:/app/model_cache
     environment:
       - HF_HOME=/app/model_cache
+    networks:
+      - ml-network
 
 volumes:
-  hf_cache:
+  hf-cache:
+
+networks:
+  ml-network:
