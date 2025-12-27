@@ -10,6 +10,7 @@ WORKDIR /app
 # RUN chown -R appuser:appuser /app
 
 ENV HF_HOME=/app/model_cache
+ENV PYTHONUNBUFFERED=1
 ARG APP_VERSION=1.0.0
 LABEL owner="Karuna" version="${APP_VERSION}"
 
